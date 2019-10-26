@@ -50,7 +50,7 @@ def extract_job_title(div):
 
 # extract jd summary
 def extract_summary(div): 
-    spans = div.findAll('span', attrs={'class': 'summary'})
+    spans = div.findAll('div', attrs={'class': 'summary'})
     for span in spans:
         return (span.text.strip())
     return 'NOT_FOUND'

@@ -9,10 +9,10 @@ from functions import *
 max_results_per_city = 100
 
 # db of city 
-city_set = ['New+York','Toronto','Las+Vegas']
+city_set = ["France"]#['New+York','Toronto','Las+Vegas']
 
 # job roles
-job_set = ['business+analyst','data+scientist']
+job_set = ['big+data','data+science','devops']
 
 
 # file num
@@ -41,7 +41,7 @@ for city in city_set:
             for start in range(0, max_results_per_city, 10):
 
                 # get dom 
-                page = requests.get('http://www.indeed.com/jobs?q=' + job_qry +'&l=' + str(city) + '&start=' + str(start))
+                page = requests.get('http://www.indeed.fr/jobs?q=' + job_qry +'&l=' + str(city) + '&start=' + str(start))
 
                 #ensuring at least 1 second between page grabs                    
                 time.sleep(1)  
@@ -105,7 +105,7 @@ for city in city_set:
                 write_logs(('Completed =>') + '\t' + city  + '\t' + job_qry + '\t' + str(cnt) + '\t' + str(start) + '\t' + str(time.time() - startTime) + '\t' + ('file_' + str(file)))
 
             #saving df as a local csv file 
-            df.to_csv('jobs_' + str(file) + '.csv', encoding='utf-8')
+            df.to_csv('./data/jobs_' + str(file) + '.csv', encoding='utf-8')
         
         else:
 
